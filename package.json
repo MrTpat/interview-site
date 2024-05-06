@@ -11,6 +11,7 @@
     "@mui/icons-material": "^5.4.4",
     "@mui/lab": "^5.0.0-alpha.170",
     "@mui/material": "^5.15.16",
+    "@mui/styles": "^5.15.16",
     "@mui/system": "^5.15.15",
     "@stripe/react-stripe-js": "^1.4.1",
     "@stripe/stripe-js": "^1.16.0",

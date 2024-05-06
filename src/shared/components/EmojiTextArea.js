@@ -1,6 +1,5 @@
 import React, { Fragment, useState, useCallback } from "react";
 import PropTypes from "prop-types";
-import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
 import {
   TextField,

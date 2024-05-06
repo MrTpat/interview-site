@@ -1,4 +1,5 @@
 import React from "react";
+import { styled } from '@mui/styles';
 import PropTypes from "prop-types";
 import {
   Drawer,
@@ -11,18 +12,24 @@ import {
 import withStyles from "@mui/styles/withStyles";
 import CloseIcon from "@mui/icons-material/Close";
 
-const drawerWidth = 240;
+const PREFIX = 'SideDrawer';
 
-const styles = {
-  toolbar: {
-    minWidth: drawerWidth,
-  },
+const classes = {
+  toolbar: `${PREFIX}-toolbar`
 };
 
+const StyledDrawer = styled(Drawer)({
+  [`& .${classes.toolbar}`]: {
+    minWidth: drawerWidth,
+  },
+});
+
+const drawerWidth = 240;
+
 function SideDrawer(props) {
-  const { classes, onClose, open } = props;
+  const {  onClose, open } = props;
   return (
-    <Drawer anchor="right" open={open} variant="temporary" onClose={onClose}>
+    <StyledDrawer anchor="right" open={open} variant="temporary" onClose={onClose}>
       <Toolbar disableGutters className={classes.toolbar}>
         <Box
           pl={3}
@@ -44,7 +51,7 @@ function SideDrawer(props) {
         </Box>
       </Toolbar>
       <Divider />
-    </Drawer>
+    </StyledDrawer>
   );
 }
 
@@ -54,4 +61,4 @@ SideDrawer.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles)(SideDrawer);
+export default (SideDrawer);

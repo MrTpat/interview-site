@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useCallback, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Portal, Backdrop } from "@mui/material";
-import withStyles from "@mui/material/styles/withStyles";
+import withStyles from "@mui/styles/withStyles";
 import ScrollbarSize from "@mui/material/Tabs/ScrollbarSize";
 import classNames from "classnames";
 

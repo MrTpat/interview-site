@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useRef, Fragment } from "react";
+import { styled } from '@mui/styles';
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { withRouter } from "react-router-dom";
@@ -15,8 +16,21 @@ import HighlightedInformation from "../../../shared/components/HighlightedInform
 import ButtonCircularProgress from "../../../shared/components/ButtonCircularProgress";
 import VisibilityPasswordTextField from "../../../shared/components/VisibilityPasswordTextField";
 
-const styles = (theme) => ({
-  forgotPassword: {
+const PREFIX = 'LoginDialog';
+
+const classes = {
+  forgotPassword: `${PREFIX}-forgotPassword`,
+  disabledText: `${PREFIX}-disabledText`,
+  formControlLabel: `${PREFIX}-formControlLabel`
+};
+
+// TODO jss-to-styled codemod: The Fragment root was replaced by div. Change the tag if needed.
+const Root = styled('div')((
+  {
+    theme
+  }
+) => ({
+  [`& .${classes.forgotPassword}`]: {
     marginTop: theme.spacing(2),
     color: theme.palette.primary.main,
     cursor: "pointer",
@@ -27,14 +41,16 @@ const styles = (theme) => ({
       color: theme.palette.primary.dark,
     },
   },
-  disabledText: {
+
+  [`& .${classes.disabledText}`]: {
     cursor: "auto",
     color: theme.palette.text.disabled,
   },
-  formControlLabel: {
+
+  [`& .${classes.formControlLabel}`]: {
     marginRight: 0,
-  },
-});
+  }
+}));
 
 function LoginDialog(props) {
   const {
@@ -71,7 +87,7 @@ function LoginDialog(props) {
   }, [setIsLoading, loginEmail, loginPassword, history, setStatus]);
 
   return (
-    <Fragment>
+    <Root>
       <FormDialog
         open
         onClose={onClose}
@@ -191,7 +207,7 @@ function LoginDialog(props) {
           </Fragment>
         }
       />
-    </Fragment>
+    </Root>
   );
 }
 
@@ -204,4 +220,4 @@ LoginDialog.propTypes = {
   status: PropTypes.string,
 };
 
-export default withRouter(withStyles(styles)(LoginDialog));
+export default withRouter((LoginDialog));

@@ -1,26 +1,35 @@
 import React from "react";
+import { styled } from '@mui/styles';
 import PropTypes from "prop-types";
 import { OutlinedInput } from "@mui/material";
 import withStyles from "@mui/styles/withStyles";
 import currencyPrettyPrint from "../../../shared/functions/currencyPrettyPrint";
 
-const styles = {
-  input: { padding: "0px 9px", cursor: "pointer" },
-  outlinedInput: {
+const PREFIX = 'Balance';
+
+const classes = {
+  input: `${PREFIX}-input`,
+  outlinedInput: `${PREFIX}-outlinedInput`,
+  wrapper: `${PREFIX}-wrapper`
+};
+
+const Root = styled('div')({
+  [`& .${classes.input}`]: { padding: "0px 9px", cursor: "pointer" },
+  [`& .${classes.outlinedInput}`]: {
     width: 90,
     height: 40,
     cursor: "pointer",
   },
-  wrapper: {
+  [`&.${classes.wrapper}`]: {
     display: "flex",
     alignItems: "center",
   },
-};
+});
 
 function Balance(props) {
-  const { balance, classes, openAddBalanceDialog } = props;
+  const { balance,  openAddBalanceDialog } = props;
   return (
-    <div className={classes.wrapper}>
+    <Root className={classes.wrapper}>
       <OutlinedInput
         value={balance === null ? "" : currencyPrettyPrint(balance)}
         className={classes.outlinedInput}
@@ -29,7 +38,7 @@ function Balance(props) {
         labelWidth={0}
         onClick={openAddBalanceDialog}
       />
-    </div>
+    </Root>
   );
 }
 
@@ -39,4 +48,4 @@ Balance.propTypes = {
   openAddBalanceDialog: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles)(Balance);
+export default (Balance);

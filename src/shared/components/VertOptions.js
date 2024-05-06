@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useCallback, useRef } from "react";
+import { styled } from '@mui/styles';
 import PropTypes from "prop-types";
 import {
   Popover,
@@ -11,14 +12,21 @@ import {
 import withStyles from "@mui/styles/withStyles";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
-const styles = {
-  listItemtext: {
-    paddingLeft: "0 !important",
-  },
+const PREFIX = 'VertOptions';
+
+const classes = {
+  listItemtext: `${PREFIX}-listItemtext`
 };
 
+// TODO jss-to-styled codemod: The Fragment root was replaced by div. Change the tag if needed.
+const Root = styled('div')({
+  [`& .${classes.listItemtext}`]: {
+    paddingLeft: "0 !important",
+  },
+});
+
 function VertOptions(props) {
-  const { items, classes, color } = props;
+  const { items,  color } = props;
   const anchorEl = useRef();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -32,7 +40,7 @@ function VertOptions(props) {
 
   const id = isOpen ? "scroll-playground" : null;
   return (
-    <Fragment>
+    <Root>
       <IconButton
         onClick={handleOpen}
         buttonRef={anchorEl}
@@ -75,7 +83,7 @@ function VertOptions(props) {
           ))}
         </MenuList>
       </Popover>
-    </Fragment>
+    </Root>
   );
 }
 
@@ -85,4 +93,4 @@ VertOptions.propTypes = {
   color: PropTypes.string,
 };
 
-export default withStyles(styles)(VertOptions);
+export default (VertOptions);

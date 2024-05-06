@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from "react";
+import { styled } from '@mui/styles';
 import PropTypes from "prop-types";
 import {
   Grid,
@@ -16,18 +17,26 @@ import SelfAligningImage from "../../../shared/components/SelfAligningImage";
 import HighlightedInformation from "../../../shared/components/HighlightedInformation";
 import ConfirmationDialog from "../../../shared/components/ConfirmationDialog";
 
-const styles = {
-  dBlock: { display: "block" },
-  dNone: { display: "none" },
-  toolbar: {
+const PREFIX = 'PostContent';
+
+const classes = {
+  dBlock: `${PREFIX}-dBlock`,
+  dNone: `${PREFIX}-dNone`,
+  toolbar: `${PREFIX}-toolbar`
+};
+
+const StyledPaper = styled(Paper)({
+  [`& .${classes.dBlock}`]: { display: "block" },
+  [`& .${classes.dNone}`]: { display: "none" },
+  [`& .${classes.toolbar}`]: {
     justifyContent: "space-between",
   },
-};
+});
 
 const rowsPerPage = 25;
 
 function PostContent(props) {
-  const { pushMessageToSnackbar, setPosts, posts, openAddPostModal, classes } =
+  const { pushMessageToSnackbar, setPosts, posts, openAddPostModal, } =
     props;
   const [page, setPage] = useState(0);
   const [isDeletePostDialogOpen, setIsDeletePostDialogOpen] = useState(false);
@@ -109,7 +118,7 @@ function PostContent(props) {
   }, [posts, onDelete, page]);
 
   return (
-    <Paper>
+    <StyledPaper>
       <Toolbar className={classes.toolbar}>
         <Typography variant="h6">Your Posts</Typography>
         <Button
@@ -151,7 +160,7 @@ function PostContent(props) {
         loading={isDeletePostDialogLoading}
         onConfirm={deletePost}
       />
-    </Paper>
+    </StyledPaper>
   );
 }
 
@@ -163,4 +172,4 @@ PostContent.propTypes = {
   pushMessageToSnackbar: PropTypes.func,
 };
 
-export default withStyles(styles)(PostContent);
+export default (PostContent);

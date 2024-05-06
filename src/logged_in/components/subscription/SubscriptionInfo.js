@@ -1,19 +1,26 @@
 import React from "react";
+import { styled } from '@mui/styles';
 import PropTypes from "prop-types";
 import { ListItemText, Button, Toolbar } from "@mui/material";
 
 import withStyles from "@mui/styles/withStyles";
 
-const styles = {
-  toolbar: {
-    justifyContent: "space-between",
-  },
+const PREFIX = 'SubscriptionInfo';
+
+const classes = {
+  toolbar: `${PREFIX}-toolbar`
 };
 
+const StyledToolbar = styled(Toolbar)({
+  [`&.${classes.toolbar}`]: {
+    justifyContent: "space-between",
+  },
+});
+
 function SubscriptionInfo(props) {
-  const { classes, openAddBalanceDialog } = props;
+  const {  openAddBalanceDialog } = props;
   return (
-    <Toolbar className={classes.toolbar}>
+    <StyledToolbar className={classes.toolbar}>
       <ListItemText primary="Status" secondary="Premium Account" />
       <Button
         variant="contained"
@@ -23,7 +30,7 @@ function SubscriptionInfo(props) {
       >
         Add Balance
       </Button>
-    </Toolbar>
+    </StyledToolbar>
   );
 }
 
@@ -32,4 +39,4 @@ SubscriptionInfo.propTypes = {
   openAddBalanceDialog: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles)(SubscriptionInfo);
+export default (SubscriptionInfo);
