@@ -47,7 +47,6 @@ class App extends Component {
     }
 
     async componentDidMount() {
-	await new Promise(res => setTimeout(res, 300));
 	this.darkify();
     }
 
