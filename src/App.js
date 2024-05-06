@@ -1,4 +1,4 @@
-import React, { Fragment, Suspense, lazy } from "react";
+import React, { Fragment, Component, Suspense, lazy, useEffect } from "react";
 import {
   ThemeProvider,
   StyledEngineProvider,
@@ -8,12 +8,21 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import theme from "./theme";
 import GlobalStyles from "./GlobalStyles";
 import Pace from "./shared/components/Pace";
+import {
+    enable as enableDarkMode,
+    disable as disableDarkMode,
+    auto as followSystemColorScheme,
+    exportGeneratedCSS as collectCSS,
+    isEnabled as isDarkReaderEnabled
+} from 'darkreader';
 
 const LoggedInComponent = lazy(() => import("./logged_in/components/Main"));
 
 const LoggedOutComponent = lazy(() => import("./logged_out/components/Main"));
 
-function App() {
+
+class App extends Component {
+    render() {
   return (
     <BrowserRouter>
       <StyledEngineProvider injectFirst>
@@ -35,6 +44,22 @@ function App() {
       </StyledEngineProvider>
     </BrowserRouter>
   );
+    }
+
+    async componentDidMount() {
+	await new Promise(res => setTimeout(res, 300));
+	this.darkify();
+    }
+
+    componentDidUpdate() {
+	this.darkify();
+    }
+
+    darkify() {
+	    enableDarkMode(); // dark styles from darkreader!
+    }
+
 }
+
 
 export default App;
