@@ -78,13 +78,13 @@ const styles = (theme) => ({
   container: {
     marginTop: theme.spacing(6),
     marginBottom: theme.spacing(12),
-    [theme.breakpoints.down("lg")]: {
+    [theme.breakpoints.down('xl')]: {
       marginBottom: theme.spacing(9),
     },
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down('lg')]: {
       marginBottom: theme.spacing(6),
     },
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down('lg')]: {
       marginBottom: theme.spacing(3),
     },
   },

@@ -104,7 +104,7 @@ function NavBar(props) {
                 <MenuIcon color="primary" />
               </IconButton>
             </Hidden>
-            <Hidden mdDown>
+            <Hidden lgDown>
               {menuItems.map((element) => {
                 if (element.link) {
                   return (

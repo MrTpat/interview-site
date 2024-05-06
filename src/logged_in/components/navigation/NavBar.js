@@ -38,7 +38,7 @@ const styles = (theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('md')]: {
       width: "100%",
       marginLeft: 0,
     },
@@ -67,7 +67,7 @@ const styles = (theme) => ({
     width: 24,
     marginLeft: theme.spacing(2),
     marginRight: theme.spacing(2),
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('md')]: {
       marginLeft: theme.spacing(1.5),
       marginRight: theme.spacing(1.5),
     },
@@ -85,7 +85,7 @@ const styles = (theme) => ({
     backgroundColor: theme.palette.common.black,
   },
   smBordered: {
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('md')]: {
       borderRadius: "50% !important",
     },
   },
@@ -228,7 +228,7 @@ function NavBar(props) {
                 </IconButton>
               </Box>
             </Hidden>
-            <Hidden smDown>
+            <Hidden mdDown>
               <Typography
                 variant="h4"
                 className={classes.brandText}
@@ -292,7 +292,7 @@ function NavBar(props) {
           <SideDrawer open={isSideDrawerOpen} onClose={closeDrawer} />
         </Toolbar>
       </AppBar>
-      <Hidden smDown>
+      <Hidden mdDown>
         <Drawer //  both drawers can be combined into one for performance
           variant="permanent"
           classes={{

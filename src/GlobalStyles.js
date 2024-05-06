@@ -16,7 +16,7 @@ const styles = (theme) => ({
       paddingTop: `${theme.spacing(1.75)} !important`,
       paddingBottom: `${theme.spacing(1.75)} !important`,
       paddingLeft: `${theme.spacing(4)} !important`,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down('lg')]: {
         paddingLeft: `${theme.spacing(4)} !important`,
       },
       "@media (max-width:  420px)": {
@@ -55,37 +55,37 @@ const styles = (theme) => ({
     },
     ".lg-mg-top": {
       marginTop: `${theme.spacing(20)} !important`,
-      [theme.breakpoints.down("lg")]: {
+      [theme.breakpoints.down('xl')]: {
         marginTop: `${theme.spacing(18)} !important`,
       },
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down('lg')]: {
         marginTop: `${theme.spacing(16)} !important`,
       },
-      [theme.breakpoints.down("sm")]: {
+      [theme.breakpoints.down('md')]: {
         marginTop: `${theme.spacing(14)} !important`,
       },
     },
     ".lg-mg-bottom": {
       marginBottom: `${theme.spacing(20)} !important`,
-      [theme.breakpoints.down("lg")]: {
+      [theme.breakpoints.down('xl')]: {
         marginBottom: `${theme.spacing(18)} !important`,
       },
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down('lg')]: {
         marginBottom: `${theme.spacing(16)} !important`,
       },
-      [theme.breakpoints.down("sm")]: {
+      [theme.breakpoints.down('md')]: {
         marginBottom: `${theme.spacing(14)} !important`,
       },
     },
     ".lg-p-top": {
       paddingTop: `${theme.spacing(20)} !important`,
-      [theme.breakpoints.down("lg")]: {
+      [theme.breakpoints.down('xl')]: {
         paddingTop: `${theme.spacing(18)} !important`,
       },
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down('lg')]: {
         paddingTop: `${theme.spacing(16)} !important`,
       },
-      [theme.breakpoints.down("sm")]: {
+      [theme.breakpoints.down('md')]: {
         paddingTop: `${theme.spacing(14)} !important`,
       },
     },

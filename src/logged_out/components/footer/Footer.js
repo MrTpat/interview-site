@@ -191,7 +191,7 @@ function Footer(props) {
               </Box>
             </form>
           </Grid>
-          <Hidden lgDown>
+          <Hidden xlDown>
             <Grid item xs={12} md={6} lg={4}>
               <Box display="flex" justifyContent="center">
                 <div>

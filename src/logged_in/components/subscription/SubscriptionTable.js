@@ -24,7 +24,7 @@ const styles = (theme) => ({
   },
   contentWrapper: {
     padding: theme.spacing(3),
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('md')]: {
       padding: theme.spacing(2),
     },
     width: "100%",

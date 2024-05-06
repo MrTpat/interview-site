@@ -25,7 +25,7 @@ const styles = (theme) => ({
     maxWidth: 350,
     marginLeft: theme.spacing(2),
     marginRight: theme.spacing(1),
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down('lg')]: {
       maxWidth: 270,
     },
   },

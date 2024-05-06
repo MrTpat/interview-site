@@ -26,7 +26,7 @@ import ButtonCircularProgress from "../../../shared/components/ButtonCircularPro
 const styles = (theme) => ({
   numberInput: {
     width: 120,
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down('lg')]: {
       width: 80,
     },
     "@media (max-width: 350px)": {

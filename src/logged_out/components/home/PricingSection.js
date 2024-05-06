@@ -9,15 +9,15 @@ import useWidth from "../../../shared/functions/useWidth";
 
 const styles = (theme) => ({
   containerFix: {
-    [theme.breakpoints.down("lg")]: {
+    [theme.breakpoints.down('xl')]: {
       paddingLeft: theme.spacing(6),
       paddingRight: theme.spacing(6),
     },
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down('lg')]: {
       paddingLeft: theme.spacing(4),
       paddingRight: theme.spacing(4),
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('md')]: {
       paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2),
     },
@@ -26,14 +26,14 @@ const styles = (theme) => ({
     paddingBottom: theme.spacing(1),
   },
   cardWrapper: {
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('md')]: {
       marginLeft: "auto",
       marginRight: "auto",
       maxWidth: 340,
     },
   },
   cardWrapperHighlighted: {
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('md')]: {
       marginLeft: "auto",
       marginRight: "auto",
       maxWidth: 360,
