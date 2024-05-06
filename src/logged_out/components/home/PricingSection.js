@@ -9,15 +9,15 @@ import useWidth from "../../../shared/functions/useWidth";
 
 const styles = (theme) => ({
   containerFix: {
-    [theme.breakpoints.down('xl')]: {
+    [theme.breakpoints.down("lg")]: {
       paddingLeft: theme.spacing(6),
       paddingRight: theme.spacing(6),
     },
-    [theme.breakpoints.down('lg')]: {
+    [theme.breakpoints.down("md")]: {
       paddingLeft: theme.spacing(4),
       paddingRight: theme.spacing(4),
     },
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down("sm")]: {
       paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2),
     },
@@ -26,14 +26,14 @@ const styles = (theme) => ({
     paddingBottom: theme.spacing(1),
   },
   cardWrapper: {
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down("sm")]: {
       marginLeft: "auto",
       marginRight: "auto",
       maxWidth: 340,
     },
   },
   cardWrapperHighlighted: {
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down("sm")]: {
       marginLeft: "auto",
       marginRight: "auto",
       maxWidth: 360,
@@ -41,10 +41,61 @@ const styles = (theme) => ({
   },
 });
 
+const packages = [{
+    'title': 'Barebones Algorithm Interview',
+    'cost': 90,
+    'details': ['Hour long coding interview session', 'At most 2 algorithmic questions', 'Professional interviewer'],
+    'highlighted': false
+}, {
+    'title': 'Algorithm Interview with Review',
+    'cost': 120,
+    'details': ['Hour long coding interview session', '30 minute question review', 'Professional interviewer'],
+    'highlighted': true
+}, {
+    'title': 'Behavioral and Algorithmic Interview With Review',
+    'cost': 150,
+    'details': ['Hour long coding interview session', '30 minute behavioral interview session', '30 minute question review', 'Professional interviewer'],
+    'highlighted': false
+}, {
+    'title': 'Mock full-day on-site interview',
+    'cost': 250,
+    'details': ['Hour long coding behavioral interview session', '2 hour long algorithmic coding interview session', 'E-mailed detailed report on interview performance and tips for improvement', 'Professional interviewer'],
+    'highlighted': false
+}];
+
+function infoToPriceCard(inf) {
+    return <PriceCard
+	      highlighted={inf.highlighted}
+              title={inf.title}
+              pricing={<span>${inf.cost}</span>}
+              features={inf.details}
+	    />;
+}
+
 function PricingSection(props) {
   const { classes, theme } = props;
   const width = useWidth();
   const isWidthUpMd = useMediaQuery(theme.breakpoints.up("md"));
+
+  // Map over packages array to generate PriceCard components dynamically
+  const dynamicComponents = packages.map((inf, index) => {
+    const delay = (index * 200).toString();
+    return (
+      <Grid
+        key={index}
+        item
+        xs={12}
+        sm={6}
+        lg={3}
+        className={classes.cardWrapper}
+        data-aos="zoom-in-up"
+	data-aos-delay={delay}
+      >
+        {infoToPriceCard(inf)}
+      </Grid>
+    );
+  });
+
   return (
     <div className="lg-p-top" style={{ backgroundColor: "#FFFFFF" }}>
       <Typography variant="h3" align="center" className="lg-mg-bottom">
@@ -56,86 +107,10 @@ function PricingSection(props) {
           spacing={calculateSpacing(width, theme)}
           className={classes.gridContainer}
         >
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            lg={3}
-            className={classes.cardWrapper}
-            data-aos="zoom-in-up"
-          >
-            <PriceCard
-              title="Starter"
-              pricing={
-                <span>
-                  $14.99
-                  <Typography display="inline"> / month</Typography>
-                </span>
-              }
-              features={["Feature 1", "Feature 2", "Feature 3"]}
-            />
-          </Grid>
-          <Grid
-            item
-            className={classes.cardWrapperHighlighted}
-            xs={12}
-            sm={6}
-            lg={3}
-            data-aos="zoom-in-up"
-            data-aos-delay="200"
-          >
-            <PriceCard
-              highlighted
-              title="Premium"
-              pricing={
-                <span>
-                  $29.99
-                  <Typography display="inline"> / month</Typography>
-                </span>
-              }
-              features={["Feature 1", "Feature 2", "Feature 3"]}
-            />
-          </Grid>
-          <Grid
-            item
-            className={classes.cardWrapper}
-            xs={12}
-            sm={6}
-            lg={3}
-            data-aos="zoom-in-up"
-            data-aos-delay={isWidthUpMd ? "400" : "0"}
-          >
-            <PriceCard
-              title="Business"
-              pricing={
-                <span>
-                  $49.99
-                  <Typography display="inline"> / month</Typography>
-                </span>
-              }
-              features={["Feature 1", "Feature 2", "Feature 3"]}
-            />
-          </Grid>
-          <Grid
-            item
-            className={classes.cardWrapper}
-            xs={12}
-            sm={6}
-            lg={3}
-            data-aos="zoom-in-up"
-            data-aos-delay={isWidthUpMd ? "600" : "200"}
-          >
-            <PriceCard
-              title="Tycoon"
-              pricing={
-                <span>
-                  $99.99
-                  <Typography display="inline"> / month</Typography>
-                </span>
-              }
-              features={["Feature 1", "Feature 2", "Feature 3"]}
-            />
-          </Grid>
+          {/* Render dynamically generated components */}
+          {dynamicComponents}
+          {/* Remaining PriceCard components */}
+          {/* Add remaining PriceCard components here */}
         </Grid>
       </div>
     </div>

@@ -5,6 +5,8 @@ import withStyles from "@mui/styles/withStyles";
 import NavBar from "./navigation/NavBar";
 import Footer from "./footer/Footer";
 import "aos/dist/aos.css";
+import CookieRulesDialog from "./cookies/CookieRulesDialog";
+import CookieConsent from "./cookies/CookieConsent";
 import dummyBlogPosts from "../dummy_data/blogPosts";
 import DialogSelector from "./register_login/DialogSelector";
 import Routing from "./Routing";
@@ -25,6 +27,7 @@ function Main(props) {
   const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
   const [blogPosts, setBlogPosts] = useState([]);
   const [dialogOpen, setDialogOpen] = useState(null);
+  const [isCookieRulesDialogOpen, setIsCookieRulesDialogOpen] = useState(false);
 
   const selectHome = useCallback(() => {
     smoothScrollTop();
@@ -85,10 +88,23 @@ function Main(props) {
     setBlogPosts(blogPosts);
   }, [setBlogPosts]);
 
+  const handleCookieRulesDialogOpen = useCallback(() => {
+    setIsCookieRulesDialogOpen(true);
+  }, [setIsCookieRulesDialogOpen]);
+
+  const handleCookieRulesDialogClose = useCallback(() => {
+    setIsCookieRulesDialogOpen(false);
+  }, [setIsCookieRulesDialogOpen]);
+
   useEffect(fetchBlogPosts, [fetchBlogPosts]);
 
   return (
     <div className={classes.wrapper}>
+      {!isCookieRulesDialogOpen && (
+        <CookieConsent
+          handleCookieRulesDialogOpen={handleCookieRulesDialogOpen}
+        />
+      )}
       <DialogSelector
         openLoginDialog={openLoginDialog}
         dialogOpen={dialogOpen}
@@ -96,6 +112,10 @@ function Main(props) {
         openTermsDialog={openTermsDialog}
         openRegisterDialog={openRegisterDialog}
         openChangePasswordDialog={openChangePasswordDialog}
+      />
+      <CookieRulesDialog
+        open={isCookieRulesDialogOpen}
+        onClose={handleCookieRulesDialogClose}
       />
       <NavBar
         selectedTab={selectedTab}

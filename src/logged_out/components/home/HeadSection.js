@@ -123,7 +123,7 @@ function HeadSection(props) {
                     >
                       <Box mb={4}>
                         <Typography variant={isWidthUpLg ? "h3" : "h4"}>
-                          Practice coding interviews at a fraction of the cost.
+			    Practice anonymous mock coding interviews at an affordable price.
                         </Typography>
                       </Box>
                       <div>
@@ -132,9 +132,11 @@ function HeadSection(props) {
                             variant={isWidthUpLg ? "h6" : "body1"}
                             color="textSecondary"
                           >
-                            Our interviewers are software engineering
-                            professionals with years of experience interviewing
-                            candidates.
+      Our interviewers are software engineering professionals
+                        with years of experience interviewing candidates. Find
+                        out why both aspiring software engineers and industry
+                        professsionals rely on MCI to help prepare them in their
+                        software engineering interview process.
                           </Typography>
                         </Box>
                         <Button

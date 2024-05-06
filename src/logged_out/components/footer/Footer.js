@@ -75,12 +75,8 @@ const styles = (theme) => ({
 
 const infos = [
   {
-    icon: <PhoneIcon />,
-    description: "+1 555 123456",
-  },
-  {
     icon: <MailIcon />,
-    description: "support@company.com",
+    description: "changeme@tilakisthegoat.com",
   },
 ];
 
@@ -159,39 +155,12 @@ function Footer(props) {
     <footer className="lg-p-top">
       <WaveBorder
         upperColor="#FFFFFF"
-        lowerColor={theme.palette.common.darkBlack}
+        lowerColor="#1E2122"
         animationNegativeDelay={4}
       />
       <div className={classes.footerInner}>
         <Grid container spacing={isWidthUpMd ? 10 : 5}>
-          <Grid item xs={12} md={6} lg={4}>
-            <form>
-              <Box display="flex" flexDirection="column">
-                <Box mb={1}>
-                  <TextField
-                    variant="outlined"
-                    multiline
-                    placeholder="Get in touch with us"
-                    InputProps={{
-                      className: classes.whiteBg,
-                      "aria-label": "Get in Touch",
-                    }}
-                    rows={4}
-                    fullWidth
-                    required
-                  />
-                </Box>
-                <ColoredButton
-                  color={theme.palette.common.white}
-                  variant="outlined"
-                  type="submit"
-                >
-                  Send Message
-                </ColoredButton>
-              </Box>
-            </form>
-          </Grid>
-          <Hidden xlDown>
+          <Hidden lgDown>
             <Grid item xs={12} md={6} lg={4}>
               <Box display="flex" justifyContent="center">
                 <div>
@@ -227,23 +196,9 @@ function Footer(props) {
               About the Company
             </Typography>
             <Typography style={{ color: "#8f9296" }} paragraph>
-              Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce
-              euismod convallis velit, eu auctor lacus vehicula sit amet.
+              MCI is dedicated to providing you with the best mock interview
+              experience possible. Please email us for any concerns. © 2024
             </Typography>
-            <Box display="flex">
-              {socialIcons.map((socialIcon, index) => (
-                <Box key={index} mr={index !== socialIcons.length - 1 ? 1 : 0}>
-                  <IconButton
-                    aria-label={socialIcon.label}
-                    className={classes.socialIcon}
-                    href={socialIcon.href}
-                    size="large"
-                  >
-                    {socialIcon.icon}
-                  </IconButton>
-                </Box>
-              ))}
-            </Box>
           </Grid>
         </Grid>
       </div>

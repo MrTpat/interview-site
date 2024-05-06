@@ -15,6 +15,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import BookIcon from "@mui/icons-material/Book";
+import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import NavigationDrawer from "../../../shared/components/NavigationDrawer";
 
 const styles = (theme) => ({
@@ -43,7 +44,6 @@ function NavBar(props) {
   const {
     classes,
     openRegisterDialog,
-    openLoginDialog,
     handleMobileDrawerOpen,
     handleMobileDrawerClose,
     mobileDrawerOpen,
@@ -51,24 +51,9 @@ function NavBar(props) {
   } = props;
   const menuItems = [
     {
-      link: "/",
-      name: "Home",
-      icon: <HomeIcon className="text-white" />,
-    },
-    {
-      link: "/blog",
-      name: "Blog",
-      icon: <BookIcon className="text-white" />,
-    },
-    {
-      name: "Register",
+      name: "Book a Mock Interview",
       onClick: openRegisterDialog,
-      icon: <HowToRegIcon className="text-white" />,
-    },
-    {
-      name: "Login",
-      onClick: openLoginDialog,
-      icon: <LockOpenIcon className="text-white" />,
+      icon: <CalendarTodayIcon className="text-white" />,
     },
   ];
   return (
@@ -80,17 +65,9 @@ function NavBar(props) {
               variant="h4"
               className={classes.brandText}
               display="inline"
-              color="primary"
-            >
-              Wa
-            </Typography>
-            <Typography
-              variant="h4"
-              className={classes.brandText}
-              display="inline"
               color="secondary"
             >
-              Ver
+              MCI
             </Typography>
           </div>
           <div>
@@ -104,7 +81,7 @@ function NavBar(props) {
                 <MenuIcon color="primary" />
               </IconButton>
             </Hidden>
-            <Hidden lgDown>
+            <Hidden mdDown>
               {menuItems.map((element) => {
                 if (element.link) {
                   return (
@@ -158,7 +135,6 @@ NavBar.propTypes = {
   mobileDrawerOpen: PropTypes.bool,
   selectedTab: PropTypes.string,
   openRegisterDialog: PropTypes.func.isRequired,
-  openLoginDialog: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles, { withTheme: true })(memo(NavBar));

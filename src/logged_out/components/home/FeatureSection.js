@@ -4,6 +4,7 @@ import CodeIcon from "@mui/icons-material/Code";
 import BuildIcon from "@mui/icons-material/Build";
 import ComputerIcon from "@mui/icons-material/Computer";
 import BarChartIcon from "@mui/icons-material/BarChart";
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import CloudIcon from "@mui/icons-material/Cloud";
@@ -19,74 +20,26 @@ const iconSize = 30;
 
 const features = [
   {
-    color: "#00C853",
-    headline: "Feature 1",
-    text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-    icon: <BuildIcon style={{ fontSize: iconSize }} />,
+    color: "#0091EA",
+    headline: "We Only Hire Professionals",
+    text: "When you book an interview with MCI - you will be matched with one of our vetted interviewers. All of our interviewers go through a rigorous vetting process to ensure they can simulate a real interview as closely as possible.",
+    icon: <ComputerIcon style={{ fontSize: iconSize }} />,
     mdDelay: "0",
     smDelay: "0",
   },
   {
     color: "#6200EA",
-    headline: "Feature 2",
-    text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
+    headline: "On-Demand Interviews",
+    text: "MCI's network of interviewers is global - so we support interviewing according to your schedule. We even support interviews that are booked within 20 minutes of when they are supposed to take place.",
     icon: <CalendarTodayIcon style={{ fontSize: iconSize }} />,
     mdDelay: "200",
     smDelay: "200",
   },
   {
-    color: "#0091EA",
-    headline: "Feature 3",
-    text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-    icon: <MeassageIcon style={{ fontSize: iconSize }} />,
-    mdDelay: "400",
-    smDelay: "0",
-  },
-  {
-    color: "#d50000",
-    headline: "Feature 4",
-    text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-    icon: <ComputerIcon style={{ fontSize: iconSize }} />,
-    mdDelay: "0",
-    smDelay: "200",
-  },
-  {
-    color: "#DD2C00",
-    headline: "Feature 5",
-    text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-    icon: <BarChartIcon style={{ fontSize: iconSize }} />,
-    mdDelay: "200",
-    smDelay: "0",
-  },
-  {
-    color: "#64DD17",
-    headline: "Feature 6",
-    text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-    icon: <HeadsetMicIcon style={{ fontSize: iconSize }} />,
-    mdDelay: "400",
-    smDelay: "200",
-  },
-  {
-    color: "#304FFE",
-    headline: "Feature 7",
-    text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-    icon: <CloudIcon style={{ fontSize: iconSize }} />,
-    mdDelay: "0",
-    smDelay: "0",
-  },
-  {
-    color: "#C51162",
-    headline: "Feature 8",
-    text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-    icon: <CodeIcon style={{ fontSize: iconSize }} />,
-    mdDelay: "200",
-    smDelay: "200",
-  },
-  {
-    color: "#00B8D4",
-    headline: "Feature 9",
-    text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-    icon: <CancelIcon style={{ fontSize: iconSize }} />,
+    color: "#00C853",
+    headline: "Cost",
+    text: "MCI offers the lowest cost for a mock interview in the industry. We understand our clients may be in the hunt for a job - and we are cognizant of that in our pricing.",
+    icon: <AttachMoneyIcon style={{ fontSize: iconSize }} />,
     mdDelay: "400",
     smDelay: "0",
   },
@@ -101,10 +54,10 @@ function FeatureSection(props) {
     <div style={{ backgroundColor: "#FFFFFF" }}>
       <div className="container-fluid lg-p-top">
         <Typography variant="h3" align="center" className="lg-mg-bottom">
-          Features
+          Why Choose MCI?
         </Typography>
         <div className="container-fluid">
-          <Grid container spacing={calculateSpacing(width, theme)}>
+          <Grid container spacing={calculateSpacing(width, theme)} justifyContent="center">
             {features.map((element) => (
               <Grid
                 item
@@ -113,13 +66,16 @@ function FeatureSection(props) {
                 data-aos="zoom-in-up"
                 data-aos-delay={isWidthUpMd ? element.mdDelay : element.smDelay}
                 key={element.headline}
+                style={{ display: 'flex', justifyContent: 'center' }} // Center content horizontally
               >
-                <FeatureCard
-                  Icon={element.icon}
-                  color={element.color}
-                  headline={element.headline}
-                  text={element.text}
-                />
+                <div style={{ textAlign: 'center' }}> {/* Center text */}
+                  <FeatureCard
+                    Icon={element.icon}
+                    color={element.color}
+                    headline={element.headline}
+                    text={element.text}
+                  />
+                </div>
               </Grid>
             ))}
           </Grid>
@@ -132,3 +88,4 @@ function FeatureSection(props) {
 FeatureSection.propTypes = {};
 
 export default withTheme(FeatureSection);
+
